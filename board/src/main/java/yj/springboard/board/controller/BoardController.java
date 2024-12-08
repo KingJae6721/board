@@ -19,9 +19,6 @@ import yj.springboard.board.entity.BoardEntity;
 import yj.springboard.board.service.BoardService;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
- 
-
 @Controller
 @Log4j2
 public class BoardController {
