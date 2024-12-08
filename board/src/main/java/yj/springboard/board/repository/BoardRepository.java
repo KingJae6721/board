@@ -7,3 +7,4 @@ import yj.springboard.board.entity.BoardEntity;
 public interface BoardRepository extends JpaRepository<BoardEntity, Integer>{
     
 }
+ 

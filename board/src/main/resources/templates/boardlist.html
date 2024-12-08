@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>게시글 리스트 페이지</title>
 </head>
 <style>
-
     .layout {
-        width : 500px;
-        margin : 0 auto;
-        margin-top : 40px;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
     }
-
 </style>
-<body>
 
+<body>
+    <a href="/board/write"><button>글 작성</button></a>
     <div class="layout">
-        <table>
-            <thead>
+        <table border="1" >
+            <thead >
                 <tr>
-                    <th>글번호</th>
+                    <th>글번호123</th>
                     <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
                 </tr>
             </thead>
+
             <body>
                 <!-- 타임리프 반복기능 "변수: 컬렉션" -->
                 <tr th:each="board : ${list}">
@@ -30,10 +33,13 @@
                     <td>
                         <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                     </td>
+                    <td th:text="${board.writer}">작성자</td>
+                    <td th:text="${#dates.format(board.updDate, 'yyyy-MM-dd HH:mm')}">작성일</td>
                 </tr>
             </body>
         </table>
     </div>
 
 </body>
+
 </html>

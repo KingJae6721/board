@@ -1,7 +1,10 @@
 package yj.springboard.board.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import yj.springboard.board.entity.BoardEntity;
 import yj.springboard.board.service.BoardService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  
 
 @Controller
-
+@Log4j2
 public class BoardController {
 
     @Autowired
@@ -56,6 +61,7 @@ public class BoardController {
     }
 
     //게시글 삭제
+    @Transactional
     @GetMapping("/board/delete")
     public String boardDelete(Integer id) {
 
@@ -66,9 +72,8 @@ public class BoardController {
 
     //게시글 수정 페이지 보여주기
     @GetMapping("/board/modify/{id}")
-    public String boardModify (Model model, @PathVariable("id") Integer id) {
+    public String boardModify(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("board", boardService.boardView(id));
-
         return "boardmodify";
     }
 
@@ -78,8 +83,10 @@ public class BoardController {
         BoardEntity boardTemp = boardService.boardView(id);
         boardTemp.setTitle(boardEntity.getTitle());
         boardTemp.setContent(boardEntity.getContent());
+        boardTemp.setContent(boardEntity.getContent());
+        boardTemp.setUpdDate(new Date());
 
-        boardService.boardWrite(boardEntity);
+        boardService.boardWrite(boardTemp);
         
         return "redirect:/board/list";
     }

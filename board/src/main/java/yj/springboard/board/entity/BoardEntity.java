@@ -1,6 +1,8 @@
 package yj.springboard.board.entity;
  
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,12 @@ public class BoardEntity {
     private String title;
 
     private String content;
+    
+    private String writer;
+
+    private Date regDate ;
+    
+    private Date updDate ;
 }
 
 

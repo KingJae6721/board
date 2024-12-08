@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>게시글 작성폼</title>
@@ -7,22 +8,21 @@
 
 <style>
     .layout {
-        width : 500px;
-        margin : 0 auto;
-        margin-top : 40px;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 40px;
     }
 
     .layout input {
-        width : 100%;
-        box-sizing : border-box
+        width: 100%;
+        box-sizing: border-box
     }
 
     .layout textarea {
-        width : 100%;
-        margin-top : 10px;
-        min-height : 300px;
+        width: 100%;
+        margin-top: 10px;
+        min-height: 300px;
     }
-
 </style>
 
 <body>
@@ -30,12 +30,15 @@
     <div class="layout">
         <!-- Controller에 연결되서 service-> repository 데이터 삽입-->
         <form action="/board/writepro" method="post">
-            <input name="title" type="text">
-            <textarea name="content"></textarea>
+            <input name="title" type="text" placeholder="제목">
+            <input name="writer" type="text" placeholder="작성자">
+            <textarea name="content" placeholder="글을 작성해주세요"></textarea>
+
             <button type="submit">작성</button>
         </form>
 
     </div>
 
 </body>
+
 </html>
